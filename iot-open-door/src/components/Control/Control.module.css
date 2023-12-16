@@ -1,0 +1,84 @@
+.control {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.control {
+  padding-left: 24px;
+  padding-right: 16px;
+}
+
+.control .message {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 12px;
+  color: #fff;
+  background-color: #23AAF2;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+
+.control .name {
+  margin: 12px 0 24px;
+}
+
+.control .add {
+  margin-bottom: 18px;
+}
+
+.control .detect, 
+.control .access {
+  margin-left: 24px;
+}
+
+.control .capture {
+  text-align: left;
+  margin: 16px 0;
+}
+
+.control .capture .heading {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.control .capture .user {
+  padding: 4px 0;
+}
+
+.control .user .username,
+.control .user .delete, 
+.control .user .processing {
+  font-size: 16px;
+}
+
+.control .user .iconDelete {
+  cursor: pointer;
+}
+
+.control .user .iconDelete:hover {
+  opacity: 0.5;
+}
+
+.control .user .username {
+  font-weight: 500;
+  color: #6e6e6e;
+  display: inline-block;
+  min-width: 64px;
+}
+
+.control .user .delete {
+  color: #FE6068;
+  cursor: pointer;
+}
+
+.control .user .delete:hover {
+  opacity: 0.5;
+}
+
+.control .capture .processing {
+  color: #3688FC;
+}
+
+.control .deleteAll {
+  margin-right: 24px;
+}

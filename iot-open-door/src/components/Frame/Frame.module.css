@@ -1,0 +1,31 @@
+.wrapperVideo {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 24px;
+}
+
+.video, 
+.loading, 
+.stop {
+  min-height: 354px;
+  min-width: 472px;
+  border: 1px solid #23AAF2;
+  border-radius: 12px;
+}
+
+.video {
+  object-fit: cover;
+  object-position: center;
+}
+
+.stop {
+  background-color: #f1faff;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

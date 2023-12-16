@@ -1,0 +1,169 @@
+.footer {
+  border-top: 1px #ccc solid;
+  margin-top: 16px;
+}
+
+.wrapContent {
+  padding: 8px 48px 6px 48px;
+}
+
+/* .moreInfo {
+  display: flex;
+} */
+
+.headingThird {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-weight: 600;
+}
+
+.wrapConnect {
+  display: flex;
+  justify-content: center;
+}
+
+.unorderList {
+  display: inline-block;
+  list-style-type: none;
+  margin-bottom: 0;
+}
+
+.list {
+  margin-bottom: 12px;
+}
+
+.paragraph {
+  font-size: 16px;
+  margin-bottom: 0;
+}
+
+
+.anchor {
+  text-decoration: none;
+  color: #000;
+}
+
+.anchor:hover {
+  opacity: 0.6;
+}
+
+.about,
+.keepConnect,
+.contact {
+  padding: 18px;
+}
+
+.connectInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  font-size: 24px;
+}
+
+.desPara {
+  margin: 0;
+  display: inline-block;
+  /* width: 100%; */
+  /* overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; */
+}
+
+.facebook {
+  color: #3B5998;
+}
+
+.twitter {
+  color: #55ACEE;
+}
+
+.googleplus {
+  color: #DB4437;
+}
+
+.dribbble {
+  color: #EA4C89;
+}
+
+.pinterest {
+  color: #BD081C;
+}
+
+.home,
+.phone,
+.email {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  margin-bottom: 12px;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.description {
+  flex: 1;
+  margin-left: 24px;
+  display: inline-block;
+}
+
+.copyrightParagraph {
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.separateAbout,
+.separateConnect {
+  display: none;
+  margin: 0 16px;
+}
+
+/* Kích thước nhỏ hơn 992px */
+@media (max-width: 991.98px) {
+  .separateAbout {
+    display: block;
+  }
+}
+
+/* Kích thước nhỏ hơn 768px */
+@media (max-width: 767.98px) {
+  .separateConnect {    
+    display: block;
+  }
+
+  .unorderList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .list {
+    width: 50%;
+  }
+}
+
+/* Kích thước nhỏ hơn 576px */
+@media (max-width: 575.98px) {
+  .unorderList {
+    display: inline-block;
+  }
+  
+  .list {
+    width: 100%;
+  }
+
+  .about .paragraph {
+    text-align: center;
+  }
+}

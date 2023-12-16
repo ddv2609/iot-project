@@ -1,0 +1,86 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  margin-bottom: 28px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 2px;
+  background-color: #fff;
+}
+
+.menuWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 4px 48px;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoWrapper:hover {
+  text-decoration: none;
+}
+
+.wrapLogoImage {
+  width: 36px;
+  height: auto;
+}
+
+.logoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logoName {
+  padding: 8px 8px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.unorderList {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.list {
+  font-size: 16px;
+  margin: 8px 12px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.anchor {
+  padding: 8px 12px;
+  border-radius: 12px;
+  color: #747271;
+  transition: all .25s ease-in-out;
+}
+
+.anchor:focus {
+  color: #007bff;
+  background-color: #D9EBFF;
+}
+
+.anchor:hover {
+  text-decoration: none;
+  background-color: #D9EBFF;
+  cursor: pointer;
+}

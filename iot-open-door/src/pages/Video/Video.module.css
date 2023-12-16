@@ -1,0 +1,31 @@
+.liveVideo .wrapperLiveVideo {
+  padding: 8px 36px;
+}
+
+.liveVideo .wrapperVideo {
+  width: 640px;
+  height: 436px;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 12px;
+  border: 2px solid #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.liveVideo .wrapperVideo .video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.liveVideo .wrapperVideo .videoImg {
+  width: 50%;
+  height: 50%;
+  object-fit: contain;
+  object-position: center;
+}

@@ -1,0 +1,25 @@
+.videoInfo {
+  text-align: center;
+  padding-bottom: 24px;
+}
+ 
+.videoInfo .state .statelb,
+.videoInfo .time .timeDetail,
+.videoInfo .toggle .actionlb {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.videoInfo .state .iconState {
+  font-size: 18px;
+}
+
+.videoInfo .state .iconOn, 
+.videoInfo .state .stateOnlb {
+  color: #EB3223;
+}
+
+.videoInfo .state .iconOff, 
+.videoInfo .state .stateOfflb {
+  color: #747271;
+}

@@ -1,0 +1,22 @@
+.home {
+  position: relative;
+  height: 70vh;
+}
+
+.home .introduce {
+  position: absolute;
+  min-width: 664px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.home .content {
+  position: relative;
+}
+
+.home .content .icon {
+  font-size: 52px;
+  padding: 4px 8px;
+}
