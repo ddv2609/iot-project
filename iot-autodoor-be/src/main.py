@@ -28,30 +28,21 @@ app.add_middleware(
   allow_headers=["*"],
 )
 
-# Kích thước ảnh đầu vào mà mô hình đã được huấn luyện
 img_width, img_height = 128, 128
 
-# Load mô hình đã lưu
 model = load_model('face_detection_model.h5')
 
-# Hàm kiểm tra real_time
 async def handle_recognize_face(face):
-  # Chuẩn bị ảnh để dự đoán
   face = face.resize((img_width, img_height))
 
-  # Chuyển đổi hình ảnh thành mảng NumPy
   img_array = image.img_to_array(face)
 
-  # Mở rộng chiều của mảng ảnh
   img_array = np.expand_dims(img_array, axis=0)
 
-  # Chuẩn hóa giá trị pixel của mảng ảnh
   img_array /= 255.0
 
-  # Dự đoán
   prediction = model.predict(img_array)
 
-  # Lấy kết quả kiểm tra
   if prediction[0][0] > prediction[0][1]:
     return False
   else:
@@ -76,7 +67,6 @@ async def recognize_enpoint(server: WebSocket):
     await server.accept()
     print("Start '/recognize'")
 
-    # Xử lý lấy tên người được cấp quyền mở cửa
     text_file_path = "../user_open_door.txt"
     images_folder_path = "../images/open/"
     real_time_path = "../real_time/"
@@ -87,7 +77,6 @@ async def recognize_enpoint(server: WebSocket):
       if not content.strip() == "":
         names = content.split(",")
 
-    # Gửi danh sách tên đã được cấp quyền mở cửa
     await server.send_json(json.dumps({
       "type": "users",
       "users": names
@@ -102,16 +91,11 @@ async def recognize_enpoint(server: WebSocket):
       open_door_time = 0
       while True:
         current_time = time.time()
-        blob = await socket.recv() # Receive data
+        blob = await socket.recv()
         if current_time - open_door_time >= 10:
-
-          # Handle recognize face here
-          #...
           face = Image.open(BytesIO(blob))
-          # Tạo một công việc không đồng bộ để xử lý việc nhận diện khuôn mặt
           face_task = asyncio.create_task(handle_recognize_face(face))
 
-          # Thực hiện các dòng lệnh khác trong khi xử lý việc nhận diện khuôn mặt
           await asyncio.sleep(0) 
 
           if not isEmpty:
@@ -119,14 +103,10 @@ async def recognize_enpoint(server: WebSocket):
               isAllow += 1
             else:
               isAllow = 0
-              # add image to real_time
               add_image_to_real_time(real_time_path, face)
-
-          # await server.send_bytes(BytesIO(blob).read()) 
           
           if isAllow == 50:
             isAllow = 0
-            # Send data after recognize
             open_door_time = time.time()
             await socket.send("9")
             await server.send_json(json.dumps({
@@ -152,13 +132,11 @@ async def train_enpoint(server: WebSocket):
       print(message)
       if message["action"] == "add":
 
-        # Xử lý lấy tên người được cấp quyền mở cửa
         with open(text_file_path, 'r') as file:
           content = file.read()
           if not content.strip() == "":
             names = content.split(",")
         
-        # Kiểm tra trùng tên
         if message["user"] not in names:
           print("'/train' is connecting to ESCP32-CAM...")
           async with client.connect("ws://192.168.207.38:60/") as socket:
@@ -169,57 +147,45 @@ async def train_enpoint(server: WebSocket):
               image = Image.open(BytesIO(blob))
               image.save(f'{images_folder_path}{message["user"]}_{num}.jpg')
           
-          # Train new model here
-          #...
           train()
           model = load_model('face_detection_model.h5')
 
-          # Xử lý ghi lại file text
           names.append(message["user"])
           with open(text_file_path, 'w') as file:
             file.write(','.join(names))
           
-          # Gửi thông báo train thành công
           await server.send_json(json.dumps({
             "users": names,
             "status": "train success"
           }))
         else:
-          # Gửi thông báo tên đã được sử dụng
           await server.send_json(json.dumps({
             "users": names,
             "status": "namesake"
           }))
       else: 
         if message["action"] == "delete":
-          # Xử lý lấy tên và xóa tên khỏi file lưu trữ tên người được cấp quyền mở cửa
           with open(text_file_path, 'r') as file:
             content = file.read()
             names = content.split(",")
           names.remove(message["user"])
           
-          # Xóa ảnh
           for filename in os.listdir(images_folder_path):
             if filename.startswith(f'{message["user"]}_') and filename.endswith('.jpg'):
               image_path = os.path.join(images_folder_path, filename)
               os.remove(image_path)
 
-          # Retrain model here
-          #...
           train()
           model = load_model('face_detection_model.h5')
 
-          # Xử lý ghi lại file text
           with open(text_file_path, 'w') as file:
             file.write(','.join(names))
           
-          # Gửi thông báo xóa tên thành công
           await server.send_json(json.dumps({
             "users": names,
             "status": "delete success"
           }))
         else:
-          # Xử lý xóa toàn bộ tên người dùng
           with open(text_file_path, 'w') as file:
             file.write("")
           
@@ -230,7 +196,6 @@ async def train_enpoint(server: WebSocket):
           train()
           model = load_model('face_detection_model.h5')
 
-          # Gửi thông báo xóa tên thành công
           await server.send_json(json.dumps({
             "users": [],
             "status": "delete all success"
